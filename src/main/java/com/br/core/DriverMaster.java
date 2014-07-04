@@ -26,6 +26,7 @@ public class DriverMaster {
 	};
 
 	public static WebDriver startDriverInstance(String driverKey) {
+		//proxy
 		BrowserType browser = BrowserType.get(driverKey);
 		WebDriver driver;
 		EventFiringWebDriver eventDriver;
