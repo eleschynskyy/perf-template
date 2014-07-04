@@ -4,3 +4,4 @@ test-output/
 bin/
 .project
 .classpath
+src/main/resources/drivers/
