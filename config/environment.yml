@@ -1,0 +1,5 @@
+environments:
+
+ TEST:
+  scheme: https
+  host: test.bravais.com

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Bravais 3.x" verbose="5" data-provider-thread-count="1">
+	<!-- <parameter name="browser" value="firefox" /> <parameter name="environment" 
+		value="TEST" /> -->
+	<listeners>
+		<listener class-name="com.br.utils.TestExecutionListener"></listener>
+	</listeners>
+	<test name="bravais tests">
+		<parameter name="browser" value="firefox" />
+		<parameter name="environment" value="TEST" />
+		<classes>
+			<class name="com.br.tests.LoginTest" />
+			<!-- <class name="com.br.tests.DeleteDocumentsTest" /> -->
+		</classes>
+	</test>
+</suite>
