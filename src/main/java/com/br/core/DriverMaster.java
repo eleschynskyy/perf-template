@@ -1,17 +1,22 @@
 package com.br.core;
 
+import java.net.InetAddress;
 import java.util.HashMap;
+import java.util.Map;
 
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
-import com.br.utils.WebDriverListener;
+import net.lightbody.bmp.proxy.ProxyServer;
 
+import com.br.utils.WebDriverListener;
 import com.br.utils.ConfigProperties;
 
 public class DriverMaster {
@@ -21,22 +26,31 @@ public class DriverMaster {
 
 	private static HashMap<Long, WebDriver> driverMap = new HashMap<Long, WebDriver>();
 	private static HashMap<Long, EventFiringWebDriver> eventDriverMap = new HashMap<Long, EventFiringWebDriver>();
+	
+	public static ProxyServer server;
 
 	private DriverMaster() {
 	};
 
-	public static WebDriver startDriverInstance(String driverKey) {
-		//proxy
+	public static WebDriver startDriverInstance(String driverKey) throws Exception {
+//		Map<String, String> proxyOptions = new HashMap<String, String>();
+//		proxyOptions.put("httpProxy", "127.0.0.1:4444");
+		server = new ProxyServer(4444);
+		server.start();
+//		server.setLocalHost(InetAddress.getByName("127.0.0.1"));
+//		server.setOptions(proxyOptions);
+		Proxy proxy = server.seleniumProxy();
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability(CapabilityType.PROXY, proxy);
 		BrowserType browser = BrowserType.get(driverKey);
 		WebDriver driver;
 		EventFiringWebDriver eventDriver;
 		switch (browser) {
 		case FIREFOX:
-			driver = new FirefoxDriver();
+			driver = new FirefoxDriver(capabilities);
 			break;
 		case CHROME:
 			setChromeDriver();
-			DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		    ChromeOptions options = new ChromeOptions();
 		    options.addArguments("test-type");
 		    capabilities.setCapability(ChromeOptions.CAPABILITY, options);
@@ -44,10 +58,10 @@ public class DriverMaster {
 			break;
 		case IE:
 			setIEDriver();
-			driver = new InternetExplorerDriver();
+			driver = new InternetExplorerDriver(capabilities);
 			break;
 		default:
-			driver = new FirefoxDriver();
+			driver = new FirefoxDriver(capabilities);
 			break;
 		}
 		driver.manage().window().maximize();

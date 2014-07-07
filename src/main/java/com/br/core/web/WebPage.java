@@ -33,5 +33,9 @@ public abstract class WebPage<T extends WebPage<T>> extends Component<T> {
 	protected List<WebElement> getListOfWebElements(By findByMethod) {
 		return driver.findElements(findByMethod);
 	}
+	
+	public static String getBaseUrl() {
+		return BASE_URL;
+	}
 
 }
