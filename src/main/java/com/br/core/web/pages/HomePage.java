@@ -35,7 +35,7 @@ public class HomePage extends WebPage<HomePage> {
 	public boolean isAvailable() {
 		return getDocumentsLink().isAvailable() &&
 			   getLoggedInUser().isAvailable() &&
-			   getLoggedInUser().isElementTextPresent(user.getFirstName() + " " + user.getLastName()) &&
+			   isProperUserLoggedIn(user) &&
 			   getPaginationInfo().isAvailable() &&
 			   isPaginationInfoPatternConformsWith(getPaginationInfo().getText()) &&
 			   areAllChannelsLoaded(getNumberOfChannelsOnFirstPageByPaginationInfo());
@@ -86,6 +86,17 @@ public class HomePage extends WebPage<HomePage> {
 			return Integer.valueOf(numberOfChannels);
 		}
 		return 0;
+	}
+	
+	private boolean isProperUserLoggedIn(User user) {
+		return (user.getFirstName() + " " + user.getLastName()).contains(removeDotsIfNeededFrom(getLoggedInUser().getText()));
+	}
+	
+	private String removeDotsIfNeededFrom(String text) {
+		if (text.endsWith("...")) {
+			return text.substring(0, text.length() - 3);
+		} 
+		return text;
 	}
 	
 	public boolean isPaginationInfoPatternConformsWith(String text) {

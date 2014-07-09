@@ -14,7 +14,7 @@ import com.br.data.objects.User;
 
 public class LoginTest extends BaseTest {
 	
-	@Test(dataProvider = "provideUser", dataProviderClass = CsvDataProvider.class, enabled = true, invocationCount = 1)
+	@Test(dataProvider = "provideRandomUserFromList", dataProviderClass = CsvDataProvider.class, enabled = true, invocationCount = 2, threadPoolSize = 2)
 	public void userWithRightCredentialsCouldLogin(User user) {
 		HomePage homePage = new LoginPage(DriverMaster.getDriverInstance())
 			.loginWithRightCredentialsAs(user);
@@ -27,7 +27,7 @@ public class LoginTest extends BaseTest {
 //		}
 	}
 	
-	@Test(dataProvider = "provideUser", dataProviderClass = CsvDataProvider.class, enabled = true, invocationCount = 1)
+	@Test(dataProvider = "provideUser", dataProviderClass = CsvDataProvider.class, enabled = false, invocationCount = 1)
 	public void userWithRightCredentialsCouldLogin1(User user) {
 		HomePage homePage = new LoginPage(DriverMaster.getDriverInstance())
 			.loginWithRightCredentialsAs(user);

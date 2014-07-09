@@ -3,11 +3,13 @@ package com.br.utils;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriverException;
+import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.TestListenerAdapter;
@@ -48,6 +50,11 @@ public class TestExecutionListener extends TestListenerAdapter {
 			status = "Skipped";
 			break;
 		}
+		long executionTime = result.getEndMillis() - result.getStartMillis();
+		Map<String, String> params = result.getTestClass().getXmlTest().getTestParameters();
+//		TestStepReporter.reportln("Host:", result.getHost() == null ? "localhost" : result.getHost());
+		TestStepReporter.reportln("Platform: OS=" + params.get("platform") + "; browser=" + params.get("browser") + "; version=" + params.get("version"));
+		TestStepReporter.reportln("Execution time:", executionTime + " ms");
 		TestStepReporter.reportln("Status:", status);
 		TestStepReporter.reportln("Screenshot:");
 		takeScreenshot(result);
@@ -63,6 +70,12 @@ public class TestExecutionListener extends TestListenerAdapter {
 
 	public void onTestFailure(ITestResult arg0) {
 		printTestResults(arg0);
+	}
+	
+	@Override
+	public void onStart(ITestContext testContext) {
+		  super.onStart(testContext);
+//		  testContext.
 	}
 	
 	public void takeScreenshot(ITestResult result){

@@ -35,7 +35,7 @@ public abstract class WebComponent<T extends WebComponent<T>> extends Component<
 		return driver.findElement(findByMethod);
 	}
 	
-	public boolean isElementTextPresent(String text) {
+	public boolean isElementTextEqualTo(String text) {
 		return getText().equals(text);
 	}
 
