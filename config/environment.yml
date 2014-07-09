@@ -1,8 +1,8 @@
 environments:
 
- TEST:
+ XPE2:
   scheme: https
-  host: test.bravais.com
- DEV:
+  host: xpe2.qa.xyleme.com
+ XPE:
   scheme: https
-  host: portal4-qa.bravais.com
+  host: xpe.qa.xyleme.com

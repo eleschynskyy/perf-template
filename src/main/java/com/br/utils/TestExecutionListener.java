@@ -54,7 +54,7 @@ public class TestExecutionListener extends TestListenerAdapter {
 		Map<String, String> params = result.getTestClass().getXmlTest().getTestParameters();
 //		TestStepReporter.reportln("Host:", result.getHost() == null ? "localhost" : result.getHost());
 		TestStepReporter.reportln("Platform: OS=" + params.get("platform") + "; browser=" + params.get("browser") + "; version=" + params.get("version"));
-		TestStepReporter.reportln("Execution time:", executionTime + " ms");
+		TestStepReporter.reportln("Total execution time:", executionTime + " ms");
 		TestStepReporter.reportln("Status:", status);
 		TestStepReporter.reportln("Screenshot:");
 		takeScreenshot(result);

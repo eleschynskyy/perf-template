@@ -7,10 +7,11 @@ import com.br.core.web.WebPage;
 import com.br.core.web.elements.Button;
 import com.br.core.web.elements.TextInput;
 import com.br.data.objects.User;
+import com.br.utils.ConfigProperties;
 
 public class LoginPage extends WebPage<LoginPage> {
 
-	private static final String PAGE_URL = BASE_URL;
+	private static final String PAGE_URL = ConfigProperties.getSystemProperties("lcms.login");
 
 	public LoginPage(WebDriver driver) {
 		super(driver);
@@ -32,20 +33,20 @@ public class LoginPage extends WebPage<LoginPage> {
 
 	public HomePage loginWithRightCredentialsAs(User user) {
 		fillFormAndClick(user);
-		return new HomePage(driver, user).waitUntilAvailable();
+		return new HomePage(driver).waitUntilAvailable();
 	}
 
 	private TextInput getUsernameInput() {
-		return new TextInput(driver, By.id("username"));
+		return new TextInput(driver, By.id("j_username"));
 	}
 
 	private TextInput getPasswordInput() {
-		return new TextInput(driver, By.name("password"));
+		return new TextInput(driver, By.id("j_password"));
 	}
 
 	private Button getLoginButton() {
 		return new Button(driver,
-				By.xpath("//button[@class='btn btn-success']"));
+				By.xpath("//input[@type='image' and contains(@id, 'loginForm')]"));
 	}
 
 	private void fillFormAndClick(User user) {
