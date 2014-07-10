@@ -23,11 +23,11 @@ public class HomePage extends WebPage<HomePage> {
 
 	@Override
 	public boolean isAvailable() {
-		return getStudioLogo().isAvailable();
+		return getLogoutLogo().isAvailable();
 	}
 
-	private CustomElement getStudioLogo() {
-		return new CustomElement(driver, By.xpath("//img[contains(@src,'btnXylemeLcmsOff.png')]"));
+	private CustomElement getLogoutLogo() {
+		return new CustomElement(driver, By.xpath("//img[contains(@src,'btnLogoutOff.png')]"));
 	}
 
 }

@@ -15,7 +15,7 @@ import com.br.utils.TestStepReporter;
 
 public class PreviewTest extends BaseTest {
 	
-	@Test(dataProvider = "provideRandomUserFromList", dataProviderClass = CsvDataProvider.class, enabled = true, invocationCount = 5, threadPoolSize = 5)
+	@Test(dataProvider = "provideRandomUserFromList", dataProviderClass = CsvDataProvider.class, enabled = true, invocationCount = 1, threadPoolSize = 5)
 	public void previewDocument(User user) {
 		long startTime = System.currentTimeMillis();
 		HomePage homePage = new LoginPage(DriverMaster.getDriverInstance())
