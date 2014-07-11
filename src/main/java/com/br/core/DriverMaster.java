@@ -1,7 +1,6 @@
 package com.br.core;
 
 import static org.openqa.selenium.Platform.LINUX;
-import static org.openqa.selenium.Platform.WINDOWS;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,8 +16,12 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHttpEntityEnclosingRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.HttpCommandExecutor;
@@ -36,6 +39,8 @@ public class DriverMaster {
 			+ ConfigProperties.getSystemProperties("hub.ip")
 			+ ":"
 			+ ConfigProperties.getSystemProperties("hub.port") + "/wd/hub";
+	private static String ffProfile = ConfigProperties
+			.getSystemProperties("firefox.profile");
 
 	private DriverMaster() {
 	};
@@ -46,21 +51,32 @@ public class DriverMaster {
 		PlatformType platform = PlatformType.get(platformKey);
 		WebDriver driver;
 		DesiredCapabilities capabilitiesRC = new DesiredCapabilities();
+		capabilitiesRC.setVersion(version);
 		switch (platform) {
 		case WINDOWS:
-			capabilitiesRC.setPlatform(WINDOWS);
+			capabilitiesRC.setPlatform(Platform.WINDOWS);
 			break;
 		case LINUX:
 			capabilitiesRC.setPlatform(LINUX);
 			break;
 		default:
-			capabilitiesRC.setPlatform(WINDOWS);
+			capabilitiesRC.setPlatform(Platform.WINDOWS);
 			break;
 		}
 		switch (browser) {
 		case FIREFOX:
 			capabilitiesRC.setBrowserName(DesiredCapabilities.firefox()
 					.getBrowserName());
+			/*
+			ProfilesIni allProfiles = new ProfilesIni();
+			FirefoxProfile ffp = allProfiles.getProfile(ffProfile);
+			*/
+			/*
+			 * FirefoxProfile ffp = new FirefoxProfile();
+			 * ffp.setPreference("plugins.click_to_play", false);
+			 * ffp.setPreference("plugin.default_plugin_disabled", false);
+			*/
+//			capabilitiesRC.setCapability(FirefoxDriver.PROFILE, ffp);
 			break;
 		case CHROME:
 			capabilitiesRC.setBrowserName(DesiredCapabilities.chrome()
@@ -78,7 +94,11 @@ public class DriverMaster {
 					.getBrowserName());
 			break;
 		}
-		capabilitiesRC.setVersion(version);
+		/*
+		System.out.println("getPlatform(): " + capabilitiesRC.getPlatform());
+		System.out.println("getBrowserName(): " + capabilitiesRC.getBrowserName());
+		System.out.println("getVersion(): " + capabilitiesRC.getVersion());
+		*/
 		driver = new RemoteWebDriver(new URL(hubURL), capabilitiesRC);
 		driver.manage().window().maximize();
 		driverMap.put(Thread.currentThread().getId(), driver);

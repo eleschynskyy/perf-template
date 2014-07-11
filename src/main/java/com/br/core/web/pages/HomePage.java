@@ -5,11 +5,10 @@ import org.openqa.selenium.WebDriver;
 
 import com.br.core.web.WebPage;
 import com.br.core.web.elements.CustomElement;
-import com.br.utils.ConfigProperties;
 
 public class HomePage extends WebPage<HomePage> {
 
-	private static final String PAGE_URL = ConfigProperties.getSystemProperties("lcms.home");
+	private static final String PAGE_URL = LCMS_HOME_PAGE_URL;
 
 	public HomePage(WebDriver driver) {
 		super(driver);

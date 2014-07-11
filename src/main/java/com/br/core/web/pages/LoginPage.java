@@ -7,11 +7,10 @@ import com.br.core.web.WebPage;
 import com.br.core.web.elements.Button;
 import com.br.core.web.elements.TextInput;
 import com.br.data.objects.User;
-import com.br.utils.ConfigProperties;
 
 public class LoginPage extends WebPage<LoginPage> {
 
-	private static final String PAGE_URL = ConfigProperties.getSystemProperties("lcms.login");
+	private static final String PAGE_URL = LCMS_LOGIN_PAGE_URL;
 
 	public LoginPage(WebDriver driver) {
 		super(driver);
