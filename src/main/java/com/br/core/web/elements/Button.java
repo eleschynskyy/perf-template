@@ -7,8 +7,8 @@ import com.br.core.web.WebComponent;
 
 public class Button extends WebComponent<Button> {
 
-	public Button(WebDriver driver, By findByMethod) {
-		super(driver, findByMethod); 
+	public Button(WebDriver driver, By findByMethod, String description) {
+		super(driver, findByMethod, description); 
 	}
 	
 }

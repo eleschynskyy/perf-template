@@ -10,8 +10,8 @@ public class HomePage extends WebPage<HomePage> {
 
 	private static final String PAGE_URL = LCMS_HOME_PAGE_URL;
 
-	public HomePage(WebDriver driver) {
-		super(driver);
+	public HomePage(WebDriver driver, String description) {
+		super(driver, description);
 	}
 
 	@Override
@@ -22,11 +22,11 @@ public class HomePage extends WebPage<HomePage> {
 
 	@Override
 	public boolean isAvailable() {
-		return getLogoutLogo().isAvailable();
+		return getLogoutLogo().waitUntilAvailable().isAvailable();
 	}
 
 	private CustomElement getLogoutLogo() {
-		return new CustomElement(driver, By.xpath("//img[contains(@src,'btnLogoutOff.png')]"));
+		return new CustomElement(driver, By.xpath("//img[contains(@src,'btnLogoutOff.png')]"), "Logout Button");
 	}
 
 }

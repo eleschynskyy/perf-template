@@ -7,8 +7,8 @@ import com.br.core.web.WebComponent;
 
 public class TextInput extends WebComponent<TextInput> {
 
-	public TextInput(WebDriver driver, By findByMethod) {
-		super(driver, findByMethod);
+	public TextInput(WebDriver driver, By findByMethod, String description) {
+		super(driver, findByMethod, description);
 	}
 	
 	public TextInput inputText(String text) {

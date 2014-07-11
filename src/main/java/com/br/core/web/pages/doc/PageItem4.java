@@ -13,17 +13,17 @@ import com.br.core.web.elements.Image;
 import com.br.core.web.elements.Text;
 import com.br.utils.ConfigProperties;
 
-public class PageItem1_3 extends WebPage<PageItem1_3> {
+public class PageItem4 extends WebPage<PageItem4> {
 
 	private static final String DOCUMENT_URL = XPE_DOCUMENT_URL;
-	private static final String PAGE_URL = BASE_URL + DOCUMENT_URL + "#Item1.3";
+	private static final String PAGE_URL = BASE_URL + DOCUMENT_URL + "#Item1.3.2";
 
-	public PageItem1_3(WebDriver driver) {
-		super(driver);
+	public PageItem4(WebDriver driver, String description) {
+		super(driver, description);
 	}
 
 	@Override
-	public PageItem1_3 load() {
+	public PageItem4 load() {
 		driver.get(PAGE_URL);
 		return this;
 	}
@@ -32,25 +32,25 @@ public class PageItem1_3 extends WebPage<PageItem1_3> {
 	public boolean isAvailable() {
 		return getNextButton().isAvailable() &&
 			   getPreviousButton().isAvailable() &&
-			   getExpectedElement().isAvailable();
+			   getExpectedElement().waitUntilAvailable().isAvailable();
+//			   getExpectedElement().isFullyVisible();
 	}
 	
-	private Text getExpectedElement() {
-		return new Text(driver, By.xpath("//div[contains(text(),'Global') and @class='TableTitle']"));
+	private Image getExpectedElement() {
+		return new Image(driver, By.xpath("//img[@src='https://qa.xyleme.com:13580/media-service/Standard/Photo/Solar_System/terr_sizes.png']"), "terr_sizes.png");
 	}
 
 	private Button getNextButton() {
-		return new Button(driver, By.xpath("//button[@id='FooterNavigationNext']"));
+		return new Button(driver, By.xpath("//button[@id='FooterNavigationNext']"), "Next button");
 	}
 	
 	private Button getPreviousButton() {
-		return new Button(driver, By.xpath("//button[@id='FooterNavigationPrevious']"));
+		return new Button(driver, By.xpath("//button[@id='FooterNavigationPrevious']"), "Previous button");
 	}
 
-	public PageItem1_3 navigateToNextPage() {
+	public PageItem4 navigateToNextPage() {
 		getNextButton().click();
-		//TODO
-		return new PageItem1_3(driver);
+		return new PageItem4(driver, "");
 	}
 
 }

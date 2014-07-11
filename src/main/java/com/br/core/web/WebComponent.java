@@ -4,13 +4,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.internal.WebElementToJsonConverter;
+
+import com.br.utils.TestStepReporter;
 
 public abstract class WebComponent<T extends WebComponent<T>> extends Component<T> {
 	
 	protected final By findByMethod;
 
-	public WebComponent(WebDriver driver, By findByMethod) {
-		super(driver);
+	public WebComponent(WebDriver driver, By findByMethod, String description) {
+		super(driver, description);
 		this.findByMethod = findByMethod;
 	}
 	
@@ -24,7 +27,10 @@ public abstract class WebComponent<T extends WebComponent<T>> extends Component<
 	}
 	
 	public void click() {
+		long start = System.currentTimeMillis();
 		getWebElement().click();
+		long end = System.currentTimeMillis();
+		TestStepReporter.reportln("click(): " + "'" + description + "': " + (end - start) + "ms");
 	}
 	
 	public String getText() {
@@ -32,7 +38,11 @@ public abstract class WebComponent<T extends WebComponent<T>> extends Component<
 	}
 	
 	protected WebElement getWebElement() {
-		return driver.findElement(findByMethod);
+		long start = System.currentTimeMillis();
+		WebElement element = driver.findElement(findByMethod);
+		long end = System.currentTimeMillis();
+		TestStepReporter.reportln("getWebElement(): " + "'" + description + "': " + (end - start) + "ms");
+		return element;
 	}
 	
 	public boolean isElementTextEqualTo(String text) {

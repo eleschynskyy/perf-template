@@ -3,11 +3,16 @@ package com.br.core.web;
 //import java.util.concurrent.TimeUnit;
 
 //import org.openqa.selenium.JavascriptExecutor;
+import java.text.DecimalFormat;
+
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 //import org.openqa.selenium.support.ui.ExpectedCondition;
 //import org.openqa.selenium.support.ui.FluentWait;
 //import org.openqa.selenium.support.ui.Wait;
+import org.testng.Reporter;
+
+import com.br.utils.TestStepReporter;
 
 public class Waiter<T extends Component<T>> {
 
@@ -27,14 +32,20 @@ public class Waiter<T extends Component<T>> {
 	}
 
 	public T toBeAvailable() {
+		long startSearching = System.currentTimeMillis();
 		int timePassed = 0;
 		while (timePassed < DEFAULT_TIMEOUT) {
+//			TestStepReporter.reportln("Searching for " + this.component.getClass().getSimpleName() + ": " + timePassed + "ms out of " + DEFAULT_TIMEOUT + "ms");
 			if (this.component.isAvailable()) {
+//				TestStepReporter.reportln("Found " + this.component.getClass().getSimpleName() + " after " + timePassed + "ms");
+				long endSearching = System.currentTimeMillis();
+				TestStepReporter.reportln("Found " + this.component.getDescription() + " after " + (endSearching - startSearching) + "ms");
 				return this.component;
 			}
 			timePassed = timePassed + delay();
 		}
 		if (!this.component.isAvailable()) {
+			TestStepReporter.reportln("Timed out after " + DEFAULT_TIMEOUT + "ms of waiting for " + this.component.getClass().getSimpleName() + " to be available."); 
 			throw new TimeoutException("Timed out after " + DEFAULT_TIMEOUT
 					+ "ms of waiting for "
 					+ this.component.getClass().getSimpleName()
@@ -71,5 +82,5 @@ public class Waiter<T extends Component<T>> {
 			throw new RuntimeException(e);
 		}
 	}
-
+	
 }

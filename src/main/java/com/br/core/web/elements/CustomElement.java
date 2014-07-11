@@ -7,8 +7,8 @@ import com.br.core.web.WebComponent;
 
 public class CustomElement extends WebComponent<CustomElement> {
 
-	public CustomElement(WebDriver driver, By findByMethod) {
-		super(driver, findByMethod);
+	public CustomElement(WebDriver driver, By findByMethod, String description) {
+		super(driver, findByMethod, description);
 	}
 	
 }

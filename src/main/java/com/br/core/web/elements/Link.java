@@ -7,8 +7,8 @@ import com.br.core.web.WebComponent;
 
 public class Link extends WebComponent<Link> {
 
-	public Link(WebDriver driver, By findByMethod) {
-		super(driver, findByMethod);
+	public Link(WebDriver driver, By findByMethod, String description) {
+		super(driver, findByMethod, description);
 	}
 	
 }

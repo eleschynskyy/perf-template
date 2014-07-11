@@ -7,8 +7,8 @@ import com.br.core.web.WebComponent;
 
 public class CheckboxInput extends WebComponent<CheckboxInput> {
 
-	public CheckboxInput(WebDriver driver, By findByMethod) {
-		super(driver, findByMethod);
+	public CheckboxInput(WebDriver driver, By findByMethod, String description) {
+		super(driver, findByMethod, description);
 	}
 	
 }

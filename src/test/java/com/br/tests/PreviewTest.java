@@ -7,9 +7,10 @@ import org.testng.annotations.Test;
 import com.br.core.BaseTest;
 import com.br.core.CsvDataProvider;
 import com.br.core.DriverMaster;
-import com.br.core.web.pages.doc.PageItem1_1;
-import com.br.core.web.pages.doc.PageItem1_2;
-import com.br.core.web.pages.doc.PageItem1_3;
+import com.br.core.web.pages.doc.PageItem1;
+import com.br.core.web.pages.doc.PageItem2;
+import com.br.core.web.pages.doc.PageItem3;
+import com.br.core.web.pages.doc.PageItem4;
 import com.br.core.web.pages.HomePage;
 import com.br.core.web.pages.LoginPage;
 import com.br.data.objects.User;
@@ -21,25 +22,37 @@ public class PreviewTest extends BaseTest {
 	public void previewDocument(User user) {
 		//logging in
 		long startTime = System.currentTimeMillis();
-		HomePage homePage = new LoginPage(DriverMaster.getDriverInstance())
+		TestStepReporter.reportln("START: " + System.currentTimeMillis());
+		HomePage homePage = new LoginPage(DriverMaster.getDriverInstance(), "Login page")
 			.loginWithRightCredentialsAs(user);
+		TestStepReporter.reportln("LOGGED IN: " + System.currentTimeMillis());
 		long endTime = System.currentTimeMillis();
 		reportTime("Logging in took: ", (double)(endTime - startTime));
+		
 		//getting 1st page
 		startTime = System.currentTimeMillis();
-		PageItem1_1 pageItem1_1 = new PageItem1_1(DriverMaster.getDriverInstance()).loadAndWaitUntilAvailable();
+		PageItem1 pageItem1_1 = new PageItem1(DriverMaster.getDriverInstance(), "Page #1").loadAndWaitUntilAvailable();
 		endTime = System.currentTimeMillis();
 		reportTime("Opening document's 1st page took: ", (double)(endTime - startTime));
+		
 		//getting 2nd page
 		startTime = System.currentTimeMillis();
-		PageItem1_2 pageItem1_2 = pageItem1_1.navigateToNextPage().waitUntilAvailable();
+		PageItem2 pageItem1_2 = pageItem1_1.navigateToNextPage().waitUntilAvailable();
+		TestStepReporter.reportln("PAGE #2 LOADED: " + System.currentTimeMillis());
 		endTime = System.currentTimeMillis();
 		reportTime("Opening document's 2nd page took: ", (double)(endTime - startTime));
+		/*
 		//getting 3rd page
 		startTime = System.currentTimeMillis();
-		PageItem1_3 pageItem1_3 = pageItem1_2.navigateToNextPage().waitUntilAvailable();
+		PageItem3 pageItem1_3 = pageItem1_2.navigateToNextPage().waitUntilAvailable();
 		endTime = System.currentTimeMillis();
 		reportTime("Opening document's 3rd page took: ", (double)(endTime - startTime));
+		//getting 4th page
+		startTime = System.currentTimeMillis();
+		PageItem4 pageItem1_4 = pageItem1_3.navigateToNextPage().waitUntilAvailable();
+		endTime = System.currentTimeMillis();
+		reportTime("Opening document's 4th page took: ", (double)(endTime - startTime));
+		*/
 	}
 	
 	private void reportTime(String description, double t) {

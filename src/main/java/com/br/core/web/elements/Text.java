@@ -10,8 +10,8 @@ import com.br.core.web.WebComponent;
 
 public class Text extends WebComponent<Text> {
 
-	public Text(WebDriver driver, By findByMethod) {
-		super(driver, findByMethod);
+	public Text(WebDriver driver, By findByMethod, String description) {
+		super(driver, findByMethod, description);
 	}
 
 	public String getTextByPatternGroup(String pattern, int group) {
