@@ -5,3 +5,4 @@ bin/
 .project
 .classpath
 src/main/resources/drivers/
+test_data/
