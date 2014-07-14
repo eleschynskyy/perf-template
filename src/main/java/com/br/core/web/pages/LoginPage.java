@@ -17,7 +17,7 @@ public class LoginPage extends WebPage<LoginPage> {
 	public LoginPage(WebDriver driver, String description) {
 		super(driver, description);
 		loadAndWaitUntilAvailable();
-		TestStepReporter.reportln("LOGIN PAGE LOADED: " + System.currentTimeMillis());
+//		TestStepReporter.reportln("LOGIN PAGE LOADED: " + System.currentTimeMillis());
 	}
 
 	@Override
@@ -52,13 +52,13 @@ public class LoginPage extends WebPage<LoginPage> {
 	}
 
 	private void fillFormAndClick(User user) {
-		TestStepReporter.reportln("START POPULATING CREDENTIALS: " + System.currentTimeMillis());
+//		TestStepReporter.reportln("START POPULATING CREDENTIALS: " + System.currentTimeMillis());
 		getUsernameInput().inputText(user.getUsername());
-		TestStepReporter.reportln("USERNAME POPULATED: " + System.currentTimeMillis());
+//		TestStepReporter.reportln("USERNAME POPULATED: " + System.currentTimeMillis());
 		getPasswordInput().inputText(user.getPassword());
-		TestStepReporter.reportln("PASSWORD POPULATED: " + System.currentTimeMillis());
+//		TestStepReporter.reportln("PASSWORD POPULATED: " + System.currentTimeMillis());
 		getLoginButton().click();
-		TestStepReporter.reportln("LOGIN BUTTON CLICKED: " + System.currentTimeMillis());
+//		TestStepReporter.reportln("LOGIN BUTTON CLICKED: " + System.currentTimeMillis());
 	}
 
 }

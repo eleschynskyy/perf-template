@@ -32,12 +32,12 @@ public class PageItem4 extends WebPage<PageItem4> {
 	public boolean isAvailable() {
 		return getNextButton().isAvailable() &&
 			   getPreviousButton().isAvailable() &&
-			   getExpectedElement().waitUntilAvailable().isAvailable();
-//			   getExpectedElement().isFullyVisible();
+			   getExpectedElement().waitUntilAvailable().isAvailable() &&
+			   getExpectedElement().isFullyVisible();
 	}
 	
 	private Image getExpectedElement() {
-		return new Image(driver, By.xpath("//img[@src='https://qa.xyleme.com:13580/media-service/Standard/Photo/Solar_System/terr_sizes.png']"), "terr_sizes.png");
+		return new Image(driver, By.xpath("//img[@src='" + BASE_HOST + "/media-service/Standard/Photo/Solar_System/terr_sizes.png']"), "terr_sizes.png");
 	}
 
 	private Button getNextButton() {
@@ -48,9 +48,14 @@ public class PageItem4 extends WebPage<PageItem4> {
 		return new Button(driver, By.xpath("//button[@id='FooterNavigationPrevious']"), "Previous button");
 	}
 
-	public PageItem4 navigateToNextPage() {
+	public PageItem5 navigateToNextPage() {
 		getNextButton().click();
-		return new PageItem4(driver, "");
+		return new PageItem5(driver, "5th page");
+	}
+	
+	public PageItem3 navigateToPreviousPage() {
+		getPreviousButton().click();
+		return new PageItem3(driver, "Page #3"); 
 	}
 
 }

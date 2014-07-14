@@ -21,6 +21,7 @@ public abstract class WebPage<T extends WebPage<T>> extends Component<T> {
 	protected static final String LCMS_LOGIN_PAGE_URL = ENVIRONMENT.lcmsLoginUrl;
 	protected static final String LCMS_HOME_PAGE_URL = ENVIRONMENT.lcmsHomeUrl;
 	protected static final String XPE_DOCUMENT_URL = ENVIRONMENT.documentUrl;
+	protected static final String BASE_HOST = ENVIRONMENT.baseHost;
 
 	public WebPage(WebDriver driver, String description) {
 		super(driver, description);

@@ -30,7 +30,7 @@ public abstract class WebComponent<T extends WebComponent<T>> extends Component<
 		long start = System.currentTimeMillis();
 		getWebElement().click();
 		long end = System.currentTimeMillis();
-		TestStepReporter.reportln("click(): " + "'" + description + "': " + (end - start) + "ms");
+//		TestStepReporter.reportln("click(): " + "'" + description + "': " + (end - start) + "ms");
 	}
 	
 	public String getText() {
@@ -41,7 +41,7 @@ public abstract class WebComponent<T extends WebComponent<T>> extends Component<
 		long start = System.currentTimeMillis();
 		WebElement element = driver.findElement(findByMethod);
 		long end = System.currentTimeMillis();
-		TestStepReporter.reportln("getWebElement(): " + "'" + description + "': " + (end - start) + "ms");
+//		TestStepReporter.reportln("getWebElement(): " + "'" + description + "': " + (end - start) + "ms");
 		return element;
 	}
 	

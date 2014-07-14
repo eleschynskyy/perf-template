@@ -6,6 +6,7 @@ public class Environment {
 	public String host;
 	public String lcmsLoginUrl;
 	public String lcmsHomeUrl;
+	public String baseHost;
 	public String documentUrl;
 
 }

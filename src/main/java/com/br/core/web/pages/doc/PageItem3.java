@@ -45,5 +45,10 @@ public class PageItem3 extends WebPage<PageItem3> {
 		getNextButton().click();
 		return new PageItem4(driver, "Page #4");
 	}
+	
+	public PageItem2 navigateToPreviousPage() {
+		getPreviousButton().click();
+		return new PageItem2(driver, "Page #2"); 
+	}
 
 }

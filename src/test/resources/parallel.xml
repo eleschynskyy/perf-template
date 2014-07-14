@@ -6,7 +6,6 @@
 		<listener class-name="com.br.utils.TestExecutionListener"></listener>
 	</listeners>
 	<tests>
-	<!-- 
 		<test name="Win/Firefox 30.0 tests">
 			<parameters>
 				<parameter name="platform" value="WINDOWS" />
@@ -18,14 +17,13 @@
 				<class name="com.br.tests.PreviewTest" />
 			</classes>
 		</test>
-		 -->
 			 
 		<test name="Win/Chrome 35.0.1916.153 tests">
 			<parameters>
 				<parameter name="platform" value="WINDOWS" />
 				<parameter name="browser" value="chrome" />
 				<parameter name="version" value="35.0.1916.153" />
-				<parameter name="environment" value="XPE2" />
+				<parameter name="environment" value="XPE" />
 			</parameters>
 			<classes>
 				<class name="com.br.tests.PreviewTest" />
