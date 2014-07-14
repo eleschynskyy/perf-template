@@ -19,7 +19,7 @@ import com.br.utils.TestStepReporter;
 
 public class PreviewTest extends BaseTest {
 	
-	@Test(dataProvider = "provideRandomUserFromList", dataProviderClass = CsvDataProvider.class, enabled = true, invocationCount = 10, threadPoolSize = 10)
+	@Test(dataProvider = "provideRandomUserFromList", dataProviderClass = CsvDataProvider.class, enabled = true, invocationCount = 1, threadPoolSize = 1)
 	public void previewDocument(User user) {
 		//logging in
 		long startTime = System.currentTimeMillis();

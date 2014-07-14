@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.StringWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import org.apache.commons.io.IOUtils;
@@ -83,7 +84,9 @@ public class DriverMaster {
 					.getBrowserName());
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("test-type");
+			options.addArguments("");
 			capabilitiesRC.setCapability(ChromeOptions.CAPABILITY, options);
+//			capabilitiesRC.setCapability("chrome.switches", Arrays.asList("--load-extension=/path/to/extension/directory"));
 			break;
 		case IE:
 			capabilitiesRC.setBrowserName(DesiredCapabilities.internetExplorer()
