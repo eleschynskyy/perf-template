@@ -49,7 +49,7 @@ public class PageItem1 extends WebPage<PageItem1> {
 	}
 
 	private CustomElement getEmbeddedMovie() {
-		return new CustomElement(driver, By.xpath("//embed[contains(@src,'/media-service/Standard/Video/Solar_System/what_is_a_planet_360.mov')]"), "Embedded video");
+		return new CustomElement(driver, By.xpath("//embed[contains(@src,'/media-service/Standard/Video/Solar_System/what_is_a_planet_360.mov')]"), "'what_is_a_planet_360.mov'");
 	}
 	
 	private Button getNextButton() {

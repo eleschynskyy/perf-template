@@ -56,8 +56,8 @@ public class TestExecutionListener extends TestListenerAdapter {
 		TestStepReporter.reportln("Platform: OS=" + params.get("platform") + "; browser=" + params.get("browser") + "; version=" + params.get("version"));
 		TestStepReporter.reportln("Total execution time:", executionTime + " ms");
 		TestStepReporter.reportln("Status:", status);
-		TestStepReporter.reportln("Screenshot:");
-		takeScreenshot(result);
+//		TestStepReporter.reportln("Screenshot:");
+//		takeScreenshot(result);
 	}
 
 	public void onTestSkipped(ITestResult arg0) {

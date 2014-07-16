@@ -30,6 +30,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.br.utils.ConfigProperties;
 import com.br.utils.TestStepReporter;
+import com.gargoylesoftware.htmlunit.BrowserVersion;
+import com.thoughtworks.selenium.BrowserConfigurationOptions;
 
 public class DriverMaster {
 
@@ -84,13 +86,19 @@ public class DriverMaster {
 					.getBrowserName());
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("test-type");
-			options.addArguments("");
+//			options.addArguments("");
 			capabilitiesRC.setCapability(ChromeOptions.CAPABILITY, options);
 //			capabilitiesRC.setCapability("chrome.switches", Arrays.asList("--load-extension=/path/to/extension/directory"));
 			break;
 		case IE:
 			capabilitiesRC.setBrowserName(DesiredCapabilities.internetExplorer()
 					.getBrowserName());
+			break;
+		case HTML:
+			capabilitiesRC.setBrowserName(DesiredCapabilities.htmlUnitWithJs()
+					.getBrowserName());
+			capabilitiesRC.setJavascriptEnabled(true);
+//			capabilitiesRC.setCapability(BrowserConfigurationOptions.BROWSER_MODE, BrowserVersion.FIREFOX_17);
 			break;
 		default:
 			capabilitiesRC.setBrowserName(DesiredCapabilities.firefox()

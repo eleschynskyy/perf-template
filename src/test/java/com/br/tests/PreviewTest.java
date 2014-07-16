@@ -19,7 +19,7 @@ import com.br.utils.TestStepReporter;
 
 public class PreviewTest extends BaseTest {
 	
-	@Test(dataProvider = "provideRandomUserFromList", dataProviderClass = CsvDataProvider.class, enabled = true, invocationCount = 1, threadPoolSize = 1)
+	@Test(dataProvider = "provideRandomUserFromList", dataProviderClass = CsvDataProvider.class, enabled = true, invocationCount = 10, threadPoolSize = 1)
 	public void previewDocument(User user) {
 		//logging in
 		long startTime = System.currentTimeMillis();
@@ -29,7 +29,6 @@ public class PreviewTest extends BaseTest {
 //		TestStepReporter.reportln("LOGGED IN: " + System.currentTimeMillis());
 		long endTime = System.currentTimeMillis();
 		reportTime("Logging in took: ", (double)(endTime - startTime));
-		
 		//getting 1st page
 		startTime = System.currentTimeMillis();
 		PageItem1 pageItem1_1 = new PageItem1(DriverMaster.getDriverInstance(), "Page #1").loadAndWaitUntilAvailable();
