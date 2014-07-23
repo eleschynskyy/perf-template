@@ -19,9 +19,9 @@ public abstract class BaseTest {
 	@BeforeMethod(alwaysRun = true)
 	@Parameters({ "platform", "browser", "version", "environment" })
 	public void setUp(@Optional("WINDOWS") String platform,
-			@Optional("firefox") String browser,
-			@Optional("WINDOWS") String version,
-			@Optional("TEST") String environment) {
+			@Optional("iexplorer") String browser,
+			@Optional("11") String version,
+			@Optional("DEV") String environment) {
 		try {
 			startDriverInstance(platform, browser, version);
 		} catch (MalformedURLException e) {

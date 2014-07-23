@@ -14,7 +14,7 @@ import com.br.data.objects.User;
 
 public class LoginTest extends BaseTest {
 	
-	@Test(dataProvider = "provideRandomUserFromList", dataProviderClass = CsvDataProvider.class, enabled = true, invocationCount = 2, threadPoolSize = 2)
+	@Test(dataProvider = "provideRandomUserFromList", dataProviderClass = CsvDataProvider.class, enabled = true, invocationCount = 1, threadPoolSize = 1)
 	public void userWithRightCredentialsCouldLogin(User user) {
 		HomePage homePage = new LoginPage(DriverMaster.getDriverInstance())
 			.loginWithRightCredentialsAs(user);

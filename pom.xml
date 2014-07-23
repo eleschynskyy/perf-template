@@ -69,6 +69,12 @@
 					</suiteXmlFiles>
 					<!-- <systemPropertyVariables> <browser>${browser}</browser> <environment>${environment}</environment> 
 						</systemPropertyVariables> -->
+						<!-- <systemPropertyVariables> <DT_AE_AGENTACTIVE>true</DT_AE_AGENTACTIVE> 
+						</systemPropertyVariables>-->
+					<!--  
+					<environmentVariables>
+						<DT_AE_AGENTACTIVE>${env.DT_AE_AGENTACTIVE}</DT_AE_AGENTACTIVE>
+					</environmentVariables> -->
 				</configuration>
 			</plugin>
 		</plugins>

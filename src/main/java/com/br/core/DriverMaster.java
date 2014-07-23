@@ -70,7 +70,8 @@ public class DriverMaster {
 			capabilitiesRC.setCapability(ChromeOptions.CAPABILITY, options);
 			break;
 		case IE:
-			driver = new InternetExplorerDriver();
+			capabilitiesRC.setBrowserName(DesiredCapabilities.internetExplorer()
+					.getBrowserName());
 			break;
 		default:
 			capabilitiesRC.setBrowserName(DesiredCapabilities.firefox()
