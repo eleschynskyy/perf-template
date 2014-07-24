@@ -3,3 +3,7 @@ environments:
  TEST:
   scheme: https
   host: test.bravais.com
+  
+ DEV:
+  scheme: https
+  host: portal4-qa.bravais.com
