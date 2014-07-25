@@ -16,9 +16,6 @@ import com.br.utils.ConfigProperties;
 
 public class DriverMaster {
 
-	private static String chromeDriverMode = ConfigProperties
-			.getSystemProperties("chromeDriverMode");
-
 	private static HashMap<Long, WebDriver> driverMap = new HashMap<Long, WebDriver>();
 	private static HashMap<Long, EventFiringWebDriver> eventDriverMap = new HashMap<Long, EventFiringWebDriver>();
 
@@ -82,7 +79,7 @@ public class DriverMaster {
 
 	private static void setIEDriver() {
 		String os = System.getProperty("os.name").toLowerCase().substring(0, 3);
-		String ieBinary = "src/main/resources/drivers/ie/IEDriverServer"
+		String ieBinary = "src/main/resources/drivers/ie/win/IEDriverServer"
 				+ (os.equals("win") ? ".exe" : "");
 		System.setProperty("webdriver.ie.driver", ieBinary);
 	}

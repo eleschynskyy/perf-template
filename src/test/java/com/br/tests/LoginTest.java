@@ -1,8 +1,5 @@
 package com.br.tests;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-
 import org.testng.annotations.Test;
 
 import com.br.core.BaseTest;
@@ -18,26 +15,11 @@ public class LoginTest extends BaseTest {
 	public void userWithRightCredentialsCouldLogin(User user) {
 		HomePage homePage = new LoginPage(DriverMaster.getDriverInstance())
 			.loginWithRightCredentialsAs(user);
-//		assertThat("Page Error Message should be as expected",
-//				loginPage.getPageErrorMessage(),equalTo(msg.getMessage()));
-//		try {
-//			Thread.sleep(1);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-	}
-	
-	@Test(dataProvider = "provideUser", dataProviderClass = CsvDataProvider.class, enabled = true, invocationCount = 1)
-	public void userWithRightCredentialsCouldLogin1(User user) {
-		HomePage homePage = new LoginPage(DriverMaster.getDriverInstance())
-			.loginWithRightCredentialsAs(user);
-//		assertThat("Page Error Message should be as expected",
-//				loginPage.getPageErrorMessage(),equalTo(msg.getMessage()));
-//		try {
-//			Thread.sleep(1);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

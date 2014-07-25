@@ -35,7 +35,7 @@ public class HomePage extends WebPage<HomePage> {
 	public boolean isAvailable() {
 		return getDocumentsLink().isAvailable() &&
 			   getLoggedInUser().isAvailable() &&
-			   getLoggedInUser().isElementTextPresent(user.getFirstName() + " " + user.getLastName()) &&
+			   isProperUserLoggedIn(user) &&
 			   getPaginationInfo().isAvailable() &&
 			   isPaginationInfoPatternConformsWith(getPaginationInfo().getText()) &&
 			   areAllChannelsLoaded(getNumberOfChannelsOnFirstPageByPaginationInfo());
@@ -49,15 +49,15 @@ public class HomePage extends WebPage<HomePage> {
 	private Link getDocumentsLink() {
 		return new Link(driver,	By.xpath("//a[@href='/documents' and ancestor::div[@id='top-navbar-menu']]"));
 	}
-	
+
 	private Text getLoggedInUser() {
 		return new Text(driver, By.xpath("//span[@id='current-user-name' and ancestor::div[@id='top-navbar']]"));
 	}
-	
+
 	private Text getPaginationInfo() {
 		return new Text(driver, By.xpath("//small[ancestor::div[@id='channels'] and parent::div[following-sibling::ul[@class='pagination']]]"));
 	}
-	
+
 	private boolean areAllChannelsLoaded(int n) {
 		List<WebElement> channelsList = getListOfWebElements(By.xpath("//img[@class='channel-picture' and @src!='../images/loader.gif' and (@src='../images/default-channel.png' or starts-with(@src,'https://'))]"));
 		System.out.println("checking for visibility...");
@@ -73,13 +73,13 @@ public class HomePage extends WebPage<HomePage> {
 		}
 		return true;
 	}
-	
+
 	private boolean isImageVisible(WebElement image) {
 		String js = "return (typeof arguments[0].naturalWidth!=\"undefined\" && arguments[0].naturalWidth > 0)";
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 		return (Boolean)jsExecutor.executeScript(js, image);
 	}
-	
+
 	private int getNumberOfChannelsOnFirstPageByPaginationInfo() {
 		String numberOfChannels = getPaginationInfo().getTextByPatternGroup(PAGINATION_INFO_PATTERN, 1);
 		if (numberOfChannels != null) {
@@ -87,7 +87,18 @@ public class HomePage extends WebPage<HomePage> {
 		}
 		return 0;
 	}
-	
+
+	private boolean isProperUserLoggedIn(User user) {
+		return (user.getFirstName() + " " + user.getLastName()).contains(removeDotsIfNeededFrom(getLoggedInUser().getText()));
+	}
+
+	private String removeDotsIfNeededFrom(String text) {
+		if (text.endsWith("...")) {
+			return text.substring(0, text.length() - 3);
+		} 
+		return text;
+	}
+
 	public boolean isPaginationInfoPatternConformsWith(String text) {
 		Pattern p = Pattern.compile(PAGINATION_INFO_PATTERN);
 		Matcher m = p.matcher(text);
@@ -98,7 +109,7 @@ public class HomePage extends WebPage<HomePage> {
 		}
 		return false;
 	}
-	
-	
-	
+
+
+
 }
