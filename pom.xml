@@ -67,8 +67,6 @@
 					<suiteXmlFiles>
 						<suiteXmlFile>src/test/resources/ie.xml</suiteXmlFile>
 					</suiteXmlFiles>
-					<!-- <systemPropertyVariables> <browser>${browser}</browser> <environment>${environment}</environment> 
-						</systemPropertyVariables> -->
 				</configuration>
 			</plugin>
 		</plugins>

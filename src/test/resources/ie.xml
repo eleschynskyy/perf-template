@@ -13,7 +13,7 @@
 				<parameter name="environment" value="DEV" />
 			</parameters>
 			<classes>
-				<class name="com.br.tests.PreviewTest" />
+				<class name="com.br.tests.LoginTest" />
 			</classes>
 		</test>
 		<!--
