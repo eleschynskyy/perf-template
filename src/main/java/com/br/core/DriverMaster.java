@@ -48,8 +48,7 @@ public class DriverMaster {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-//			driver = new FirefoxDriver(ffp);
-			driver = new FirefoxDriver();
+			driver = new FirefoxDriver(ffp);
 			/*
 			FirefoxProfile profile = new FirefoxProfile();
 			profile.setPreference( "browser.startup.homepage", "about:addons" );
