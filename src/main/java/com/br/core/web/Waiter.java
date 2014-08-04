@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 
 public class Waiter<T extends Component<T>> {
 
-	private static final int DEFAULT_TIMEOUT = 30000;
+	private static final int DEFAULT_TIMEOUT = 60000;
 	private static final int DEFAULT_RETRY_DELAY = 100;
 	/*
 	private static final int DEFAULT_TIMEOUT_TO_FULLY_LOAD = 60000;
