@@ -27,4 +27,4 @@ environments:
   lcmsLoginUrl: https://qa.xyleme.com:13080/user-manager/login.jsf
   lcmsHomeUrl: https://qa.xyleme.com:13080/user-manager/launch.jsf
   baseHost: https://qa.xyleme.com:13080
-  documentUrl: /qa-13080/preview/c2f0538d-09a2-4713-8bdf-9043282eed31/825e78f6-37a0-4f35-8307-8ddcdd16795b/page/index.html
+  documentUrl: /qa-13080/preview/c2f0538d-09a2-4713-8bdf-9043282eed31/f740a8fc-7799-4e5e-9360-2df8a35e37a1/page/index.html
