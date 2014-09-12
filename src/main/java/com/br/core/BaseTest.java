@@ -15,7 +15,7 @@ public abstract class BaseTest {
 
 	@BeforeMethod(alwaysRun = true)
 	@Parameters({ "browser", "environment" })
-	public void setUp(@Optional("firefox") String browser, @Optional("TEST") String environment) {
+	public void setUp(@Optional("firefox") String browser, @Optional("XPE_PERF") String environment) {
 		startDriverInstance(browser);
 		setGlobalEnvironment(environment);
 	}

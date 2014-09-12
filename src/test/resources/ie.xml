@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Bravais 3.x Parallel Tests" verbose="1" thread-count="10" parallel="tests">
+<suite name="XPE-PERF Tests" verbose="1" thread-count="10" parallel="tests">
 	<listeners>
 		<listener class-name="com.br.utils.TestExecutionListener"></listener>
 	</listeners>
 	<tests>
-	<!-- 
 		<test name="Win/Firefox 30.0 tests">
 			<parameters>
 				<parameter name="platform" value="WINDOWS" />
 				<parameter name="browser" value="firefox" />
 				<parameter name="version" value="30.0" />
-				<parameter name="environment" value="XPE_1_4" />
+				<parameter name="environment" value="XPE_PERF" />
 			</parameters>
 			<classes>
 				<class name="com.br.tests.PreviewTest" />
 			</classes>
 		</test>
+	<!--
 		<test name="Win/Chrome 35.0.1916.153 tests">
 			<parameters>
 				<parameter name="platform" value="WINDOWS" />
@@ -28,7 +28,6 @@
 				<class name="com.br.tests.PreviewTest" />
 			</classes>
 		</test>
-		 -->
 		<test name="Win/IE 9.0 tests">
 			<parameters>
 				<parameter name="platform" value="WINDOWS" />
@@ -40,5 +39,6 @@
 				<class name="com.br.tests.LoginTest" />
 			</classes>
 		</test>
+	-->
 	</tests>
 </suite>

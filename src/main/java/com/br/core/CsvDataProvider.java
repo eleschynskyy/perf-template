@@ -38,9 +38,7 @@ public class CsvDataProvider {
 					}
 					User user = new User()
 						.setUsername(testData.get("username"))
-						.setPassword(testData.get("password"))
-						.setFirstName(testData.get("firstname"))
-						.setLastName(testData.get("lastname"));
+						.setPassword(testData.get("password"));
 					list.add(new Object[] { user });
 				}
 			}

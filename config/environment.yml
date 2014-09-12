@@ -1,9 +1,9 @@
 environments:
 
- TEST:
+ XPE_PERF:
   scheme: https
-  host: test.bravais.com
-  
- DEV:
-  scheme: https
-  host: portal4-qa.bravais.com
+  host: xpe-perf.qa.xyleme.com
+  lcmsLoginUrl: https://xpe-perf.qa.xyleme.com:10580/user-manager/login.jsf
+  lcmsHomeUrl: https://xpe-perf.qa.xyleme.com:10580/user-manager/launch.jsf
+  baseHost: https://xpe-perf.qa.xyleme.com:10580
+  documentUrl: /qa-10580/preview/1c6be087-e0dc-4c02-97ba-5b31e4174bcf/(outputType:OnlineCourse,packageType:Static%20SCORM%201.2)/env/qa/page/index.html
