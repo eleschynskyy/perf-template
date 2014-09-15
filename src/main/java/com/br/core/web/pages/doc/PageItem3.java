@@ -10,7 +10,7 @@ import com.br.core.web.elements.Text;
 public class PageItem3 extends WebPage<PageItem3> {
 
 	private static final String DOCUMENT_URL = XPE_DOCUMENT_URL;
-	private static final String PAGE_URL = BASE_URL + DOCUMENT_URL + "#Item1.3.1";
+	private static final String PAGE_URL = BASE_XPE_HOST + DOCUMENT_URL + "#Item1.3.1";
 
 	public PageItem3(WebDriver driver, String description) {
 		super(driver, description);

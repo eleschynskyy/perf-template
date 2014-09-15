@@ -11,7 +11,7 @@ import com.br.utils.TestStepReporter;
 public class PageItem1 extends WebPage<PageItem1> {
 
 	private static final String DOCUMENT_URL = XPE_DOCUMENT_URL;
-	private static final String PAGE_URL = BASE_URL + DOCUMENT_URL + "#Item1.1";
+	private static final String PAGE_URL = BASE_XPE_HOST + DOCUMENT_URL + "#Item1.1";
 
 	public PageItem1(WebDriver driver, String description) {
 		super(driver, description);
@@ -30,15 +30,8 @@ public class PageItem1 extends WebPage<PageItem1> {
 	public boolean isAvailable() {
 		return getNextButton().isAvailable() &&
 			   getPreviousButton().isAvailable() &&
-			   getEmbeddedMovie().waitUntilAvailable().isAvailable();
+			   getCustomElement().waitUntilAvailable().isAvailable();
 	}
-	
-	/*
-	@Override
-	public DocPage waitUntilAvailable() {
-		return null;
-	}
-	*/
 	
 	public PageItem2 navigateToNextPage() {
 		long start = System.currentTimeMillis();
@@ -48,8 +41,8 @@ public class PageItem1 extends WebPage<PageItem1> {
 		return new PageItem2(driver, "Page #2");
 	}
 
-	private CustomElement getEmbeddedMovie() {
-		return new CustomElement(driver, By.xpath("//embed[contains(@src,'/media-service/Standard/Video/Solar_System/what_is_a_planet_360.mov')]"), "'what_is_a_planet_360.mov'");
+	private CustomElement getCustomElement() {
+		return new CustomElement(driver, By.xpath("//img[contains(@src,'/media-service/Standard/Photo/Solar_System/OSS_732x400.jpg')]"), "OSS_732x400.jpg");
 	}
 	
 	private Button getNextButton() {

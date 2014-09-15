@@ -72,8 +72,6 @@
 					<suiteXmlFiles>
 						<suiteXmlFile>src/test/resources/parallel.xml</suiteXmlFile>
 					</suiteXmlFiles>
-					<!-- <systemPropertyVariables> <browser>${browser}</browser> <environment>${environment}</environment> 
-						</systemPropertyVariables> -->
 				</configuration>
 			</plugin>
 		</plugins>

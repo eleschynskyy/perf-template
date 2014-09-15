@@ -16,7 +16,9 @@ import com.br.utils.ConfigProperties;
 public class PageItem4 extends WebPage<PageItem4> {
 
 	private static final String DOCUMENT_URL = XPE_DOCUMENT_URL;
-	private static final String PAGE_URL = BASE_URL + DOCUMENT_URL + "#Item1.3.2";
+	private static final String PAGE_URL = BASE_XPE_HOST + DOCUMENT_URL + "#Item1.3.2";
+	//TODO
+	private static final String BASE_HOST = "";
 
 	public PageItem4(WebDriver driver, String description) {
 		super(driver, description);

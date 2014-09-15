@@ -96,10 +96,8 @@ public class TestExecutionListener extends TestListenerAdapter {
      					 "\" width=\"300\" height=\"150\" alt=\"\"/>" +
      					 "<br/></p></a>", true);
 		} catch (WebDriverException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}              
 }

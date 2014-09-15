@@ -12,7 +12,7 @@ import com.br.utils.TestStepReporter;
 public class PageItem5 extends WebPage<PageItem5> {
 
 	private static final String DOCUMENT_URL = XPE_DOCUMENT_URL;
-	private static final String PAGE_URL = BASE_URL + DOCUMENT_URL + "#Item1.3.3.1";
+	private static final String PAGE_URL = BASE_XPE_HOST + DOCUMENT_URL + "#Item1.3.3.1";
 
 	public PageItem5(WebDriver driver, String description) {
 		super(driver, description);

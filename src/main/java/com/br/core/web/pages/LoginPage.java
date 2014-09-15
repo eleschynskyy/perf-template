@@ -11,8 +11,8 @@ import com.br.utils.TestStepReporter;
 
 public class LoginPage extends WebPage<LoginPage> {
 
-	private static final String PAGE_URL = LCMS_LOGIN_PAGE_URL;
-	private static final String HOME_PAGE = "Home Page";
+	private static final String PAGE_URL = BASE_XPE_HOST + "/" + LCMS_INSTANCE + "/admin";
+	private static final String WS_HOME_PAGE = "Workspace Manager Home Page";
 
 	public LoginPage(WebDriver driver, String description) {
 		super(driver, description);
@@ -33,22 +33,22 @@ public class LoginPage extends WebPage<LoginPage> {
 		 getLoginButton().waitUntilAvailable().isAvailable();
 	}
 
-	public HomePage loginWithRightCredentialsAs(User user) {
+	public WMHomePage loginAs(User user) {
 		fillFormAndClick(user);
-		return new HomePage(driver, HOME_PAGE).waitUntilAvailable();
+		return new WMHomePage(driver, WS_HOME_PAGE).waitUntilAvailable();
 	}
 
 	private TextInput getUsernameInput() {
-		return new TextInput(driver, By.id("j_username"), "Username input");
+		return new TextInput(driver, By.id("username"), "Username input");
 	}
 
 	private TextInput getPasswordInput() {
-		return new TextInput(driver, By.id("j_password"), "Password input");
+		return new TextInput(driver, By.id("password"), "Password input");
 	}
 
 	private Button getLoginButton() {
 		return new Button(driver,
-				By.xpath("//input[@type='image' and contains(@id, 'loginForm')]"), "Login button");
+				By.xpath("//input[@type='image' and contains(@src, 'images/btnSubmitOff.png')]"), "Login button");
 	}
 
 	private void fillFormAndClick(User user) {

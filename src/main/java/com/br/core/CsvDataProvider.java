@@ -22,44 +22,8 @@ import com.br.utils.ConfigProperties;
 public class CsvDataProvider {
 	
 	private static String numberOfUsers = ConfigProperties
-			.getSystemProperties("number.users");
+			.getTestDataProperties("number.users");
 
-	@DataProvider(name = "provideUser")
-	public static Iterator<Object[]> provideUser(Method method) {
-		List<Object[]> list = new ArrayList<Object[]>();
-		String pathname = "test_data" + File.separator
-				+ method.getDeclaringClass().getSimpleName() + "."
-				+ method.getName() + ".csv";
-		File file = new File(pathname);
-		try {
-			CSVReader reader = new CSVReader(new FileReader(file));
-			String[] keys = reader.readNext();
-			if (keys != null) {
-				String[] dataParts;
-				while ((dataParts = reader.readNext()) != null) {
-					Map<String, String> testData = new HashMap<String, String>();
-					for (int i = 0; i < keys.length; i++) {
-						testData.put(keys[i], dataParts[i]);
-					}
-					User user = new User()
-						.setUsername(testData.get("username"))
-						.setPassword(testData.get("password"))
-						.setFirstName(testData.get("firstname"))
-						.setLastName(testData.get("lastname"));
-					list.add(new Object[] { user });
-				}
-			}
-			reader.close();
-		} catch (FileNotFoundException e) {
-			throw new RuntimeException("File " + pathname + " was not found.\n"
-					+ e.getStackTrace().toString());
-		} catch (IOException e) {
-			throw new RuntimeException("Could not read " + pathname
-					+ " file.\n" + e.getStackTrace().toString());
-		}
-		return list.iterator();
-	}
-	
 	@DataProvider(name = "provideRandomUserFromList")
 	public static Iterator<Object[]> provideRandomUserFromList(Method method) {
 		List<Object[]> list = new ArrayList<Object[]>();

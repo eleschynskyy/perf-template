@@ -15,7 +15,7 @@ import com.br.utils.ConfigProperties;
 public class PageItem2 extends WebPage<PageItem2> {
 
 	private static final String DOCUMENT_URL = XPE_DOCUMENT_URL;
-	private static final String PAGE_URL = BASE_URL + DOCUMENT_URL + "#Item1.2";
+	private static final String PAGE_URL = BASE_XPE_HOST + DOCUMENT_URL + "#Item1.2";
 	private static final String BASE_PLANET_XPATH = "//img[contains(@src,'https://qa.xyleme.com:10580/media-service/Standard/Photo/Solar_System/";
 	private static final String NEPTUNE_XPATH = BASE_PLANET_XPATH + "neptunea" + ".png')]";
 	private static final String URANUS_XPATH = BASE_PLANET_XPATH + "uranus" + ".png')]";
