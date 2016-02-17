@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 import com.br.core.web.WebPage;
 import com.br.core.web.elements.CustomElement;
+import com.br.core.web.elements.Link;
 
 public class WMHomePage extends WebPage<WMHomePage> {
 
@@ -24,7 +25,12 @@ public class WMHomePage extends WebPage<WMHomePage> {
 
 	@Override
 	public boolean isAvailable() {
-		 return getTestFolder().isAvailable();
+		 return getTestFolder().isAvailable()&&
+				getEnvironmentsLink().isAvailable();
+	}
+
+	private Link getEnvironmentsLink() {
+		return new Link(driver, By.xpath("//span[contains(text(), 'Environments')]"), "Environments link");
 	}
 
 	private CustomElement getTestFolder() {
@@ -35,6 +41,11 @@ public class WMHomePage extends WebPage<WMHomePage> {
 	public WMFileLevelPage navigateToTestFolder() {
 		getTestFolder().click();
 		return new WMFileLevelPage(driver, "File Level");
+	}
+
+	public EnvironmentsPage switchToEnvironmentsTab() {
+		getEnvironmentsLink().click();
+		return new EnvironmentsPage(driver, "Environments page");
 	}
 
 }

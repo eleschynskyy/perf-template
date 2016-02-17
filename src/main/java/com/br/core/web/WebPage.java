@@ -13,6 +13,9 @@ import com.br.core.Environment;
 import com.br.utils.ConfigProperties;
 
 public abstract class WebPage<T extends WebPage<T>> extends Component<T> {
+	
+	protected static final int DEFAULT_TIMEOUT = 30000;
+	protected static final int DEFAULT_RETRY_DELAY = 100;
 
 	private static final Configuration CONFIG = getConfig();
 	private static final Environment ENVIRONMENT = CONFIG
@@ -26,6 +29,9 @@ public abstract class WebPage<T extends WebPage<T>> extends Component<T> {
 	protected static String OUTPUT_TYPE_OPTION = ConfigProperties.getTestDataProperties("preview.output.type");
 	protected static String OUTPUT_PROFILE = ConfigProperties.getTestDataProperties("preview.output.profile");
 	protected static String OUTPUT_ENV = ConfigProperties.getTestDataProperties("preview.output.env");
+	protected static String ENV_TO_PROMOTE_FROM = ConfigProperties.getTestDataProperties("environment.to.promote.from");
+	protected static String ENV_TO_PROMOTE_TO = ConfigProperties.getTestDataProperties("environment.to.promote.to");
+	protected static String OUTPUT_TO_PROMOTE = ConfigProperties.getTestDataProperties("output.to.promote");
 
 	public WebPage(WebDriver driver, String description) {
 		super(driver, description);
@@ -40,6 +46,15 @@ public abstract class WebPage<T extends WebPage<T>> extends Component<T> {
 	
 	protected List<WebElement> getListOfWebElements(By findByMethod) {
 		return driver.findElements(findByMethod);
+	}
+	
+	protected int delay() {
+		try {
+			Thread.sleep(DEFAULT_RETRY_DELAY);
+			return DEFAULT_RETRY_DELAY;
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 }

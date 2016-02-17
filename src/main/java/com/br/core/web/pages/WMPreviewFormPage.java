@@ -1,13 +1,10 @@
 package com.br.core.web.pages;
 
-import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,9 +14,6 @@ import com.br.core.web.elements.Button;
 import com.br.core.web.elements.CustomElement;
 
 public class WMPreviewFormPage extends WebPage<WMPreviewFormPage> {
-	
-	private static final int DEFAULT_TIMEOUT = 30000;
-	private static final int DEFAULT_RETRY_DELAY = 100;
 	
 	private static final String PAGE_URL = BASE_XPE_HOST + "/" + LCMS_INSTANCE + "/admin/documents/files/" + TEST_FOLDER + "?guid=" + FILE_GUID;
 	private static final String WORKSPACE = "Workspace";
@@ -104,15 +98,6 @@ public class WMPreviewFormPage extends WebPage<WMPreviewFormPage> {
 		}
 	}
 	
-	private int delay() {
-		try {
-			Thread.sleep(DEFAULT_RETRY_DELAY);
-			return DEFAULT_RETRY_DELAY;
-		} catch (InterruptedException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
 	private boolean enoughOptions(CustomElement e) {
 		/*
 		List<WebElement> lst = getSeleniumSelect(e).getOptions();

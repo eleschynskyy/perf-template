@@ -5,7 +5,9 @@ import org.testng.annotations.Test;
 import com.br.core.BaseTest;
 import com.br.core.CsvDataProvider;
 import com.br.core.DriverMaster;
+import com.br.core.web.pages.EnvironmentsPage;
 import com.br.core.web.pages.LoginPage;
+import com.br.core.web.pages.LoginPageAsDirectPreview;
 import com.br.core.web.pages.PreviewCoursePage;
 import com.br.core.web.pages.WMFileLevelPage;
 import com.br.core.web.pages.WMHomePage;
@@ -29,8 +31,9 @@ public class PreviewTest extends BaseTest {
 		TimeReporter.reportTime("Opening document's 1st page took: ", (double)(endTime - startTime));
 	}
 	
-	@Test(dataProvider = "provideRandomUserFromList", dataProviderClass = CsvDataProvider.class, enabled = true, invocationCount = 1, threadPoolSize = 1)
-	public void previewDocument(User user) {
+	@Test(dataProvider = "provideRandomUserFromList", dataProviderClass = CsvDataProvider.class, enabled = false, invocationCount = 1, threadPoolSize = 1)
+	//origin: previewDocumentFromWorkspaceManager
+	public void previewDocumentFromWorkspaceManager(User user) {
 		long startTime = System.currentTimeMillis();
 		WMHomePage wsHomePage = new LoginPage(DriverMaster.getDriverInstance(), "Login Page")
 			.loginAs(user);
@@ -49,6 +52,35 @@ public class PreviewTest extends BaseTest {
 //		PageItem1 pageItem1_1 = new PageItem1(DriverMaster.getDriverInstance(), "Page #1").loadAndWaitUntilAvailable();
 //		endTime = System.currentTimeMillis();
 //		TimeReporter.reportTime("Opening document's 1st page took: ", (double)(endTime - startTime));
+	}
+	
+	@Test(dataProvider = "provideRandomUserFromList", dataProviderClass = CsvDataProvider.class, enabled = true, invocationCount = 1, threadPoolSize = 1)
+	//origin: previewDocument
+	public void previewDocument(User user) {
+		long startTime = System.currentTimeMillis();
+		PreviewCoursePage coursePage = new LoginPageAsDirectPreview(DriverMaster.getDriverInstance(), "Login Page as direct preview")
+			.loginAs(user);
+		long endTime = System.currentTimeMillis();
+		TimeReporter.reportTime("Opening document: ", (double)(endTime - startTime));
+	}
+	
+	@Test(dataProvider = "provideRandomUserFromList", dataProviderClass = CsvDataProvider.class, enabled = false, invocationCount = 1, threadPoolSize = 1)
+	//origin: promoteOutput
+	public void promoteOutput(User user) {
+		long startTime = System.currentTimeMillis();
+		WMHomePage wsHomePage = new LoginPage(DriverMaster.getDriverInstance(), "Login Page")
+			.loginAs(user);
+		long endTime = System.currentTimeMillis();
+		TimeReporter.reportTime("Logging in to Workspace Manager: ", (double)(endTime - startTime));
+		EnvironmentsPage environmentsPage = wsHomePage.switchToEnvironmentsTab();
+		environmentsPage.definePromoteTarget();
+		environmentsPage.expandWorkspaceOptions();
+		environmentsPage.promote();
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

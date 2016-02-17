@@ -30,9 +30,9 @@ public class PreviewCoursePage extends WebPage<PreviewCoursePage> {
 	public boolean isAvailable() {
 		// System.out.println("After previewing course active window is: " +
 		// driver.getWindowHandle());
-		return getNextButton().isAvailable()
-				&& getPreviousButton().isAvailable()
-				&& getCustomElement().isAvailable();
+		return getNextButton().waitUntilAvailable().isAvailable()
+				&& getPreviousButton().waitUntilAvailable().isAvailable()
+				&& getCustomElement().waitUntilAvailable().isAvailable();
 	}
 
 	private CustomElement getCustomElement() {

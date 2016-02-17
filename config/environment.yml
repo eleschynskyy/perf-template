@@ -3,5 +3,5 @@ environments:
  XPE_PERF:
   protocol: https
   xpeHost: xpe-perf.qa.xyleme.com
-  lcmsInstance: qa-10580
-  documentUrl: /qa-10580/preview/1c6be087-e0dc-4c02-97ba-5b31e4174bcf/(outputType:OnlineCourse,packageType:Static%20SCORM%201.2)/env/qa/page/index.html
+  lcmsInstance: lcms-isolated-10080
+  documentUrl: /qa-13080/preview/1c6be087-e0dc-4c02-97ba-5b31e4174bcf/(outputType:OnlineCourse%5BClassic%5D,packageType:Static%20SCORM%201.2)/env/dev/page/index.html
